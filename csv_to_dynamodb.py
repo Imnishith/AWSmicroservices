@@ -7,7 +7,7 @@
 # 4) Crate new role role_csvto_dynamoDB and attach with policy defined above
 # 5) Create AWS lambda under role of "role_csvto_dynamoDB" and add trigger for s3 bucket update
 # 6) Check "cloud watch logs"
-#
+# Reference : https://www.youtube.com/watch?v=5nuUmlezrHs
 
 import boto3
 
