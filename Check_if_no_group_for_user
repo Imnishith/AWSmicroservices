@@ -1,0 +1,32 @@
+#Link: https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/cognito-idp.html#CognitoIdentityProvider.Client.admin_add_user_to_group
+
+import json
+import boto3
+from boto3.dynamodb.conditions import Key
+dynamodb = boto3.resource('dynamodb')
+
+accesskey = "XXXXX
+secretaccesskey = "XXX
+region = "XXX
+
+session = boto3.Session(aws_access_key_id=accesskey, aws_secret_access_key=secretaccesskey, region_name=region)
+client = boto3.client('cognito-idp', region_name=region)
+poolId = "XXXX"
+
+email = "Sachin"
+group = "Admin"
+
+def lambda_handler():
+	# DataSet
+
+    print ("Hi")
+    resp = client.admin_list_groups_for_user(Username=email,UserPoolId=poolId,Limit=1)
+    group = resp['Groups']
+    if( len(group) == 0):
+        print("No group for user")
+        reply = client.admin_add_user_to_group( UserPoolId=poolId, Username=email, GroupName=group )
+        print(reply)
+    else:
+        print("There is group assigned for user")
+
+lambda_handler();
