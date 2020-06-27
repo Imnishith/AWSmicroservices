@@ -12,19 +12,19 @@ email = "XXX"
 group = "XXX"
 
 def lambda_handler():
-	# DataSet
-
-    resp = client.admin_create_user(
+	# DataSet    
+	try:
+            resp = client.admin_create_user(
             UserPoolId =poolId,
-            Username ="XXX",
+            Username ="XXXXX",
             UserAttributes =[
                 {
                     'Name':'email',
-                    'Value':'nishith2121@gmail.com'
+                    'Value':'XXX'
                 },
                 {
                     'Name':'phone_number',
-                    'Value':'+916351151469'
+                    'Value':'XXXX'
                 },
                 {
                     'Name':'phone_number_verified',
@@ -36,13 +36,45 @@ def lambda_handler():
                 },
                 {
                     'Name':'given_name',
-                    'Value':'XXX'
+                    'Value':'Keval Gosai'
                 }
             ],
             MessageAction ='SUPPRESS',
             DesiredDeliveryMediums = ['EMAIL'],
             TemporaryPassword ='Diwali2020'
         )
-    print(resp)
+        print(resp)
+    except client.exceptions.ResourceNotFoundException:
+        print("ResourceNotFoundException exceptions")
+    except client.exceptions.InvalidParameterException:
+        print("InvalidParameterException exceptions")
+    except client.exceptions.UserNotFoundException:
+        print("UserNotFoundException exceptions")
+    except client.exceptions.UsernameExistsException:
+        print("UsernameExistsException exceptions")
+    except client.exceptions.InvalidPasswordException:
+        print("InvalidPasswordException exceptions")
+    except client.exceptions.CodeDeliveryFailureException:
+        print("CodeDeliveryFailureException exceptions")
+    except client.exceptions.UnexpectedLambdaException:
+        print("UnexpectedLambdaException exceptions")
+    except client.exceptions.UserLambdaValidationException:
+        print("UserLambdaValidationException exceptions")
+    except client.exceptions.InvalidLambdaResponseException:
+        print("InvalidLambdaResponseException exceptions")
+    except client.exceptions.PreconditionNotMetException:
+        print("PreconditionNotMetException exceptions")
+    except client.exceptions.InvalidSmsRoleAccessPolicyException:
+        print("InvalidSmsRoleAccessPolicyException exceptions")
+    except client.exceptions.InvalidSmsRoleTrustRelationshipException:
+        print("InvalidSmsRoleTrustRelationshipException exceptions")
+    except client.exceptions.TooManyRequestsException:
+        print("TooManyRequestsException exceptions")
+    except client.exceptions.NotAuthorizedException:
+        print("NotAuthorizedException exceptions")
+    except client.exceptions.UnsupportedUserStateException:
+        print("UnsupportedUserStateException exceptions")
+    except client.exceptions.InternalErrorException:
+        print("InternalErrorException exceptions")
 
 lambda_handler();
